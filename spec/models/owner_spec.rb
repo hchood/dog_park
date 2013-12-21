@@ -13,4 +13,7 @@ describe Owner do
 
   it { should_not have_valid(:email).when(*invalid_emails)}
   it { should have_valid(:email).when(*valid_emails) }
+
+  it { should have_many(:dog_ownerships).dependent(:destroy) }
+  it { should have_many(:dogs).through(:dog_ownerships) }
 end
